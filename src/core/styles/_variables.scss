@@ -1,0 +1,59 @@
+// font sizes
+$base-font-size: 1rem !default;
+$fontsSizes: (
+  '-4': $base-font-size * 0.2,
+  '-3': $base-font-size * 0.4,
+  '-2': $base-font-size * 0.6,
+  '-1': $base-font-size * 0.8,
+  '0': $base-font-size,
+  '1': $base-font-size * 1.2,
+  '2': $base-font-size * 1.4,
+  '3': $base-font-size * 1.6,
+  '4': $base-font-size * 1.8,
+);
+
+// font families
+$fontFamilies: ('vazir');
+
+// colors
+$colors: (
+  'layer-1': #212024,
+  'layer-1-border': #2c2d30,
+
+  'layer-2': #2c2d30,
+  'layer-2-border': #3a3a3a,
+  'layer-2-placeholder': #676767,
+  'layer-2-hover': #36373a,
+  'layer-2-dash': #464646,
+  'layer-2-text-1': #cacaca,
+  'layer-2-text-2': #c1c1c1,
+  'layer-2-text-3': #e8e8e8,
+
+  'layer-3': #cccccc,
+
+  'accent': rgb(0 123 255),
+  'trans-pattern': #00000021,
+);
+
+// css root creation
+:root {
+  @each $key in $fontFamilies {
+    @for $i from 0 through 4 {
+      --f-#{$key}-#{$i}: #{$key}-#{$i}, Arial, Helvetica, sans-serif;
+    }
+  }
+
+  @each $key, $val in $fontsSizes {
+    --f-#{$key}: #{$val};
+  }
+
+  @each $key, $val in $colors {
+    --c-#{$key}: #{$val}; // DEFAULT TONES
+
+    @for $i from 1 through 9 {
+      --c-#{$key}-light-#{$i}: #{mix(white, $val, $i * 10)}; /// LIGHTER
+      --c-#{$key}-dark-#{$i}: #{mix(black, $val, $i * 10)}; /// DARKER
+      --c-#{$key}-trans-#{$i}: #{rgba($val, $i / 10)}; /// TRANSPARENCY
+    }
+  }
+}

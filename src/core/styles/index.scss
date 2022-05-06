@@ -1,0 +1,15 @@
+@import './fonts';
+@import './variables';
+
+body,
+html {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: var(--f-vazir-1);
+}
