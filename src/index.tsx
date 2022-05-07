@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { MiareExam } from './App'
 import reportWebVitals from './reportWebVitals'
+import './core/styles/index.scss'
 
 const root = ReactDOM.createRoot(document.getElementById('_miare_') as HTMLElement)
 
