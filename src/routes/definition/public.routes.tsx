@@ -1,4 +1,4 @@
-import { RoutesObject } from '@/core/types/routes.object.type'
+import type { RoutesObject } from '@/core/types/routes.object.type'
 
 /**
  *

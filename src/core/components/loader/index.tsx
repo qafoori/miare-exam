@@ -1,6 +1,6 @@
-import { FC } from 'react'
 import * as Lib from './lib'
 import { Spin } from 'antd'
+import type { FC } from 'react'
 
 export const Loader: FC<Lib.T.LoaderProps> = ({ spinner, ...rest }) => {
   return (

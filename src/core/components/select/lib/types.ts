@@ -1,4 +1,4 @@
-import { SelectProps as AntSelectProps } from 'antd'
+import type { SelectProps as AntSelectProps } from 'antd'
 
 export interface SelectProps<K = string> extends Omit<AntSelectProps, 'options' | 'defaultValue'> {
   options: SelectOption<K>[]

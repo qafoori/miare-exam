@@ -1,7 +1,7 @@
-import data from 'src/assets/long-data.json'
-import { TransactionType } from 'src/core/models/transaction'
 import * as Lib from './lib'
+import data from 'src/assets/data.json'
 import { Arr } from 'src/core/helpers'
+import type { TransactionType } from 'src/core/models/transaction'
 
 export class TransactionService {
   private db: TransactionType.AllTranspiledTypes[] = []

@@ -1,4 +1,4 @@
-import { TransactionType } from 'src/core/models/transaction'
+import type { TransactionType } from 'src/core/models/transaction'
 
 export interface TransactionProps extends TransactionType.AllTranspiledTypes {}
 
@@ -14,9 +14,3 @@ export type TranspiledDownTransaction = {
   more: string[]
   cost: number
 }
-
-export interface TransactionsProps {}
-
-export interface SelectBoxProps extends TransactionsProps {}
-
-export interface HeadingProps extends TransactionsProps {}

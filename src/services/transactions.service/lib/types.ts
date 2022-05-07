@@ -1,4 +1,4 @@
-import { TransactionType } from 'src/core/models/transaction'
+import type { TransactionType } from 'src/core/models/transaction'
 
 export interface SortTransactionsArgs {
   transaction: TransactionType.AllTypes[]

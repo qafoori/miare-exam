@@ -1,8 +1,8 @@
 import { actionTypes } from 'src/core/constants'
-import { StoreAction } from '@/core/types/store.type'
-import { TransactionType } from '@/core/models/transaction'
-import { ReadAllResult } from '@/services/transactions.service/lib/types'
-import { Pagination } from 'src/core/types/pagination.type'
+import type { StoreAction } from '@/core/types/store.type'
+import type { TransactionType } from '@/core/models/transaction'
+import type { ReadAllResult } from '@/services/transactions.service/lib/types'
+import type { Pagination } from 'src/core/types/pagination.type'
 
 const initialState = {
   transactionType: <TransactionType.typesWithAll>'all',
@@ -54,7 +54,6 @@ export const transactionsReducer = (states = initialState, { type, payload }: Re
       return {
         ...states,
         readAll: { res: { ...payload, items: [...(states.readAll.res?.items || []), ...newPayload.items] }, lod: false, err: null },
-        // readAll: { res: payload, lod: false, err: null },
       }
     }
 

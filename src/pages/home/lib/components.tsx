@@ -1,16 +1,13 @@
-import { FC } from 'react'
 import * as Lib from '.'
-import { Select, Dividers, Loader } from 'src/core/components'
-import type { TransactionType } from '@/core/models/transaction'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '@/core/types/store.type'
-import { Input } from 'antd'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { transactionsActions } from 'src/core/store/actions'
+import { FC } from 'react'
+import { Select, Dividers, Loader } from 'src/core/components'
+import { useSelector } from 'react-redux'
+import { Input } from 'antd'
+import type { RootState } from '@/core/types/store.type'
+import type { TransactionType } from '@/core/models/transaction'
 
-const { setTransactionCourier, setTransactionsPagination } = transactionsActions
-
-export const Heading: FC<Lib.T.HeadingProps> = () => {
+export const Heading: FC = () => {
   const { transactionType, courier } = useSelector((_: RootState) => _.transactionsReducer)
   const { courierChangeHandler } = Lib.H.useHeading()
 
@@ -26,7 +23,7 @@ export const Heading: FC<Lib.T.HeadingProps> = () => {
   )
 }
 
-export const Transactions: FC<Lib.T.TransactionsProps> = ({}) => {
+export const Transactions: FC = () => {
   const { readAll } = useSelector((_: RootState) => _.transactionsReducer)
   const { goNextPage, grouped, getGroupHeading } = Lib.H.useTransactions()
 
@@ -44,7 +41,7 @@ export const Transactions: FC<Lib.T.TransactionsProps> = ({}) => {
   )
 }
 
-const SelectBox: FC<Lib.T.SelectBoxProps> = () => {
+const SelectBox: FC = () => {
   const { options, onSelectChange } = Lib.H.useSelectBox()
   return <Select<TransactionType.typesWithAll> defaultValue="all" onChange={onSelectChange} options={options} style={{ width: '150px' }} />
 }
