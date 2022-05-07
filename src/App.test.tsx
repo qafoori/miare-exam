@@ -4,6 +4,6 @@ import { MiareExam } from './App'
 
 test('renders learn react link', () => {
   render(<MiareExam />)
-  const linkElement = screen.getByText(/learn react/i)
+  const linkElement = screen.getByText(/تمام تراکنش‌ها/i)
   expect(linkElement).toBeInTheDocument()
 })

@@ -1,3 +1,9 @@
+/**
+ *
+ * we're dealing with a lot of transactions
+ * isn't better to specify some clear types for them?
+ */
+
 export const TRANSACTION_TYPE = ['trip_financials', 'payments', 'misc_expenses', 'concurrency_costs'] as const
 
 export namespace TransactionType {

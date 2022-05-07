@@ -1,12 +1,18 @@
 import * as Lib from '.'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import { FC } from 'react'
 import { Select, Dividers, Loader } from 'src/core/components'
 import { useSelector } from 'react-redux'
 import { Input } from 'antd'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import type { RootState } from '@/core/types/store.type'
 import type { TransactionType } from '@/core/models/transaction'
 
+/**
+ *
+ *
+ *
+ * includes couriers input, transactions type dropdown and the title of the page
+ */
 export const Heading: FC = () => {
   const { transactionType, courier } = useSelector((_: RootState) => _.transactionsReducer)
   const { courierChangeHandler } = Lib.H.useHeading()
@@ -23,6 +29,12 @@ export const Heading: FC = () => {
   )
 }
 
+/**
+ *
+ *
+ *
+ * groups all transactions coming from the saga store
+ */
 export const Transactions: FC = () => {
   const { readAll } = useSelector((_: RootState) => _.transactionsReducer)
   const { goNextPage, grouped, getGroupHeading } = Lib.H.useTransactions()
@@ -41,11 +53,23 @@ export const Transactions: FC = () => {
   )
 }
 
+/**
+ *
+ *
+ *
+ * select-box wrapper for choosing type of listed transactions
+ */
 const SelectBox: FC = () => {
   const { options, onSelectChange } = Lib.H.useSelectBox()
   return <Select<TransactionType.typesWithAll> defaultValue="all" onChange={onSelectChange} options={options} style={{ width: '150px' }} />
 }
 
+/**
+ *
+ *
+ *
+ * includes one specific transaction
+ */
 const Transaction: FC<Lib.T.TransactionProps> = props => {
   const transpiledDownItems = Lib.H.useTransaction(props)
   const { cost, date, more, time, type } = transpiledDownItems
@@ -72,6 +96,12 @@ const Transaction: FC<Lib.T.TransactionProps> = props => {
   )
 }
 
+/**
+ *
+ *
+ *
+ * includes all grouped transactions with their group date
+ */
 const GroupedTransactions: FC<Lib.T.GroupedTransactionsProps> = ({ heading, items }) => {
   return (
     <Dividers header={heading} top="52px">
