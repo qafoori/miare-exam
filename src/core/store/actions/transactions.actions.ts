@@ -1,8 +1,8 @@
 import { actionTypes } from 'src/core/constants'
-import { StoreAction, SagaAction } from 'src/core/types/store.type'
-import { TransactionType } from 'src/core/models/transaction'
-import { ReadAllArgs, ReadAllResult } from 'src/services/transactions.service/lib/types'
-import { Pagination } from 'src/core/types/pagination.type'
+import type { StoreAction, SagaAction } from 'src/core/types/store.type'
+import type { TransactionType } from 'src/core/models/transaction'
+import type { ReadAllArgs, ReadAllResult } from 'src/services/transactions.service/lib/types'
+import type { Pagination } from 'src/core/types/pagination.type'
 
 export const setTransactionType: StoreAction<TransactionType.typesWithAll> = payload => ({
   type: actionTypes.TRANSACTIONS_SELECTED_FILTER,

@@ -1,10 +1,10 @@
-import React from 'react'
+import type { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useAccessibility } from '../core/hooks'
 import { routes } from './routes'
 import { Helmet } from 'react-helmet'
 
-export const RouteSwitcher: React.FC = (): JSX.Element => {
+export const RouteSwitcher: FC = (): JSX.Element => {
   const { isMounted, hasAccess } = useAccessibility()
 
   return (

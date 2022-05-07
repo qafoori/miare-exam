@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import * as Lib from '.'
 
 export const LoaderContainer = styled.div`
   width: 100%;
