@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const HomePageContainer = styled.div`
   min-height: 100vh;
   padding: 52px 0 0 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 103px 0 0 0;
+  }
 `
 
 export const HeadingContainer = styled.nav`
@@ -36,6 +40,28 @@ export const HeadingContainer = styled.nav`
       margin: 0 0 0 10px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    > h1 {
+      margin: 0 0 15px 0;
+    }
+
+    > div {
+      width: 100%;
+      margin: 0 0 10px 0;
+
+      > .selectComponent {
+        flex: 1;
+      }
+
+      > .ant-input {
+        flex: 1;
+      }
+    }
+  }
 `
 
 export const TransactionsContainer = styled.div`
@@ -56,6 +82,17 @@ export const TransactionsContainer = styled.div`
 
     > .body {
       padding: 10px 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .dividersComponent {
+      > .header {
+        font-size: var(--f-0);
+      }
+
+      > .body {
+      }
     }
   }
 `
@@ -120,6 +157,33 @@ export const InfoContainer = styled.div`
           color: red;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > div {
+      > span {
+        font-size: var(--f-1);
+
+        &:nth-child(2) {
+          font-size: var(--f-2);
+        }
+      }
+
+      > ul {
+        > li {
+          font-size: var(--f-0);
+        }
+      }
+    }
+
+    > p {
+      font-size: var(--f-1);
+      flex: 1;
+      margin: 6px 10px 0 0;
     }
   }
 `
