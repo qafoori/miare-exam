@@ -13,9 +13,8 @@ export function* transactionsWatcher() {
   yield takeLatest(actionTypes.READ_ALL_TRANSACTIONS.REQUEST, readAllWorker)
 }
 
-
 /**
- * 
+ *
  * calls readAll api from the simulated web-service
  */
 const readAllCaller = (data: ReturnType<typeof setReadAll.request>) => {

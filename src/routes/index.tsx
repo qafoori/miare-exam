@@ -5,8 +5,8 @@ import { routes } from './routes'
 import { Helmet } from 'react-helmet'
 
 /**
- * 
- * 
+ *
+ *
  * renders routes
  */
 export const RouteSwitcher: FC = (): JSX.Element => {
