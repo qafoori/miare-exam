@@ -22,7 +22,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*", "src/core/*"]
     },
     "incremental": true
   },

@@ -1,9 +1,13 @@
+@import 'antd/dist/antd.css';
 @import './fonts';
 @import './variables';
+@import './bootstrap-grid.css';
 
 body,
 html {
   margin: 0;
+  scroll-behavior: smooth;
+  background-color: var(--c-layer-1);
   scroll-behavior: smooth;
 }
 
@@ -12,4 +16,19 @@ html {
 *::before {
   box-sizing: border-box;
   font-family: var(--f-vazir-1);
+  color: var(--c-layer-2-text-2);
+}
+
+// ant design customization
+.ant-select-selector,
+.ant-select-dropdown {
+  &,
+  & * {
+    text-align: right;
+  }
+}
+
+.ant-input {
+  text-align: right;
+  direction: rtl;
 }
