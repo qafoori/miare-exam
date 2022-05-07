@@ -4,6 +4,11 @@ import { useAccessibility } from '../core/hooks'
 import { routes } from './routes'
 import { Helmet } from 'react-helmet'
 
+/**
+ * 
+ * 
+ * renders routes
+ */
 export const RouteSwitcher: FC = (): JSX.Element => {
   const { isMounted, hasAccess } = useAccessibility()
 

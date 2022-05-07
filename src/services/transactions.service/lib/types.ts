@@ -14,7 +14,6 @@ export interface ReadAllArgs extends Pick<Partial<SortTransactionsArgs>, 'sortBy
 }
 
 export interface ReadAllResult {
-  // items: GroupedTransactions
   items: TransactionType.AllTranspiledTypes[]
   total: number
   page: number

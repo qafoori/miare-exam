@@ -1,3 +1,8 @@
+/**
+ *
+ * these action types, will be used for redux
+ */
+
 export const TRANSACTIONS_SELECTED_FILTER = 'TRANSACTIONS_SELECTED_FILTER'
 
 export const TRANSACTIONS_COURIER = 'TRANSACTIONS_COURIER'

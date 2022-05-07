@@ -1,3 +1,8 @@
+/**
+ *
+ * these type are using to build a better routing for react apps
+ */
+
 export type RoutesObject = {
   [name: string]: Route
 }

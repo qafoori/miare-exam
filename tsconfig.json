@@ -26,6 +26,6 @@
     },
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/core/store/__tests__/_.js"],
   "exclude": ["node_modules"]
 }

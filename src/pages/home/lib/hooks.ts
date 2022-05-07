@@ -11,6 +11,12 @@ import type { GroupedTransactions } from 'src/services/transactions.service/lib/
 const { setTransactionType, setReadAll, setTransactionCourier, setTransactionsPagination } = transactionsActions
 const scrollToTop = () => window.scrollTo(0, 0)
 
+/**
+ *
+ *
+ *
+ * helps to dispatch query string of courier name inside the Heading component
+ */
 export const useHeading = () => {
   const dispatch = useDispatch()
 
@@ -22,8 +28,16 @@ export const useHeading = () => {
   return { courierChangeHandler }
 }
 
+/**
+ *
+ *
+ *
+ * helps to dispatch transaction type inside SelectBox component
+ */
 export const useSelectBox = () => {
   const dispatch = useDispatch()
+
+  // all transactions type (select box options)
   const options: SelectOption<TransactionType.typesWithAll>[] = [
     { key: 'all', value: 'همه تراکنش‌ها' },
     { key: 'concurrency_costs', value: 'هزینه خرید ظرفیت' },
@@ -31,6 +45,8 @@ export const useSelectBox = () => {
     { key: 'payments', value: 'هزینه شارژ حساب' },
     { key: 'trip_financials', value: 'هزینه سفر' },
   ]
+
+  // triggers when you change dropdown value
   const onSelectChange = (type: TransactionType.typesWithAll) => {
     dispatch(setReadAll.clean(0))
     scrollToTop()
@@ -38,17 +54,28 @@ export const useSelectBox = () => {
       dispatch(setTransactionType(type))
     }, 10)
   }
-  return {
-    options,
-    onSelectChange,
-  }
+
+  return { options, onSelectChange }
 }
 
+/**
+ *
+ *
+ * -- fetchs default dataset on first page load + when courier and transaction type changes
+ * -- fetchs new dataset when scroll achieves to the end of the page
+ * -- groups new dataset when they come into the redux state
+ * -- recommends the functionality of:
+ *        grouping transactions,
+ *        fetching dateset,
+ *        going the next page of infinite scrolls,
+ *        making a heading title of one specific group
+ */
 export const useTransactions = () => {
   const { readAll, transactionType, courier, pagination } = useSelector((_: RootState) => _.transactionsReducer)
   const dispatch = useDispatch()
   const [grouped, setGrouped] = useState<GroupedTransactions | undefined>(undefined)
 
+  // groups transactions
   const groupTransactions = (transactions?: TransactionType.AllTranspiledTypes[]) => {
     if (transactions) {
       const grouped: GroupedTransactions = {}
@@ -67,6 +94,7 @@ export const useTransactions = () => {
     }
   }
 
+  // fetchs dateset
   const fetchData = () => {
     dispatch(
       setReadAll.request({
@@ -77,6 +105,7 @@ export const useTransactions = () => {
     )
   }
 
+  // goes to the next page of infinite scrolls
   const goNextPage = () => {
     dispatch(
       setTransactionsPagination({
@@ -87,6 +116,7 @@ export const useTransactions = () => {
     )
   }
 
+  // makes a heading title of one specific group
   const getGroupHeading = (date: string): string => {
     const jalali = new persianDate(new Date(date)).toCalendar('persian')
     const month = jalali.format('MMMM')
@@ -101,9 +131,16 @@ export const useTransactions = () => {
   return { grouped, goNextPage, getGroupHeading }
 }
 
+/**
+ *
+ *
+ *
+ * helps to transpile down transactions information into something that the Transaction component can understand them
+ */
 export const useTransaction = (transpiledTransactions: TransactionType.AllTranspiledTypes) => {
   const { time, amount, final_price, type, title } = transpiledTransactions
 
+  // transpiles down transactions information
   const transpileDown = (): Lib.T.TranspiledDownTransaction => {
     const jalali = new persianDate(new Date(time)).toCalendar('persian')
     const fullDate = jalali.format('YYYY/MM/DD')
@@ -118,6 +155,7 @@ export const useTransaction = (transpiledTransactions: TransactionType.AllTransp
     }
   }
 
+  // translates type of transactions
   const translateType = (type: TransactionType.types, title?: string): string => {
     switch (type) {
       case 'concurrency_costs': {
@@ -135,6 +173,7 @@ export const useTransaction = (transpiledTransactions: TransactionType.AllTransp
     }
   }
 
+  // translates more information about transactions
   const translateMore = (transaction: TransactionType.AllTranspiledTypes): string[] => {
     switch (transaction.type) {
       case 'concurrency_costs': {

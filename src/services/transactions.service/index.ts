@@ -3,9 +3,16 @@ import data from 'src/assets/data.json'
 import { Arr } from 'src/core/helpers'
 import type { TransactionType } from 'src/core/models/transaction'
 
+/**
+ *
+ *
+ *
+ * Simulates the way of how we can get transactions dataset from a real database
+ */
 export class TransactionService {
   private db: TransactionType.AllTranspiledTypes[] = []
 
+  // makes DB when it initiates
   constructor() {
     const flatted = <TransactionType.AllTranspiledTypes[]>Object.keys(data)
       .map(key => {
@@ -23,10 +30,12 @@ export class TransactionService {
     this.db = flatted
   }
 
+  // sorts transactions by "time" | "id"
   private sortTransactions({ transaction, sortBy, sortType }: Lib.T.SortTransactionsArgs): TransactionType.AllTranspiledTypes[] {
     return Arr.sortArrOfObj(transaction, sortBy, sortType)
   }
 
+  // filters transactions by given type
   private filterTransactionsByType({ transactions, type }: Lib.T.FilterTransactionsArgs): TransactionType.AllTranspiledTypes[] {
     if (type === 'all') {
       return transactions
@@ -35,6 +44,7 @@ export class TransactionService {
     }
   }
 
+  // filters trip transactions by their courier name
   private filterTransactionsByCourierName({
     transactions,
     courier,
@@ -42,6 +52,7 @@ export class TransactionService {
     return transactions.filter(transaction => transaction.driver?.includes(courier))
   }
 
+  // returns all transactions with the ability to "sorting & paginating & querying" them
   async readAll({ sortBy = 'time', sortType = 'ASC', page = 1, pick = 15, type = 'all', courier }: Lib.T.ReadAllArgs): Promise<Lib.T.ReadAllResult> {
     const filteredByType = this.filterTransactionsByType({ transactions: this.db, type })
 
